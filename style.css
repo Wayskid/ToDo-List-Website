@@ -1,0 +1,398 @@
+/*Globals*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    background-color: #001f3f;
+    font-family: 'Andada Pro', serif;
+}
+
+container{
+    background-color: #003a6d;
+    display: block;
+    width: 70%;
+    min-height: 900px;
+    margin: 30px auto;
+    padding: 150px 5px;
+    font-size: 18px;
+    transition: 0.4s;
+}
+
+form{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.inputField{
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    width: 350px;
+    height: 40px;
+}
+
+.inputField:focus{
+    outline: none;
+    padding: 4px 9px;
+    font-size: 18px;
+    color: #2d545e;
+}
+
+.inputField::placeholder{
+    color: #5cbdb9;
+    padding-left: 10px;
+}
+
+.inputField:focus::placeholder{
+    color: transparent;
+    transition: 0.9s;
+}
+
+.addTask{
+    background-color: #F75990;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.addTask:hover, .addTask:focus{
+    outline: none;
+    background-color: #fe0d4e;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.4s;
+}
+
+.header{
+    font-size: 30px;
+    font-weight: 900;
+    margin: 50px 30px 30px 30px;
+    text-align: left;
+    
+    background-color: #2fbabd;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.placeTask{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+.liStyle{
+    display: flex;
+    background-color: #001f3f;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 3px;
+    padding-right: 10px;
+}
+
+.editLi{
+    display: flex;
+    background: none;
+    border: none;
+    /* color: #3ed1d4; */
+    background-color: #06f4f8;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: capitalize;
+    width: 100%;
+    padding: 5px 10px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.editLi:focus{
+    color: #5efff7;
+}
+
+.deleteButton{
+    word-break: keep-all;
+    margin: auto 0;
+    background-color: #e62739;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.deleteButton:hover, .deleteButton:focus{
+    outline: none;
+    background-color: #e10017;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline black 2px;
+}
+
+.editButton{
+    word-break: keep-all;
+    margin: auto 7px auto auto;
+    padding-left: 20px;
+    background-color: #F75990;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.editButton:hover, .editButton:focus{
+    outline: none;
+    background-color: #fe0d4e;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.4s;
+    text-decoration: underline black 2px;
+}
+
+.popUp{
+    display: none;
+    position: fixed;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: 0.4s ease;
+    background-color: white;
+    width: 250px;
+    height: 150px;
+    border-radius: 4px;
+    /* margin: -100px 0; */
+}
+
+
+
+.popUpTxt{
+    font-weight: 900;
+    text-align: center;
+    margin: 20px auto 10px auto;
+    width: 50%;
+    background-color: #F75990;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+}
+
+.popUpBtn{
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background-color: #6ed3cf;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 30px;
+    box-shadow: 4px 8px 20px grey;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.popUpBtn1:hover{
+    background-color: #33beba;
+    transition: 0.4s ease-in-out;
+}
+
+
+.popUpDlt{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: 0.4s ease;
+    background-color: white;
+    width: 250px;
+    height: fit-content;
+    border-radius: 4px;
+    padding-bottom: 15px;
+    /* margin: -100px 0; */
+}
+
+.popUpDltTxt{
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+    margin: 20px auto 10px auto;
+    width: 50%;
+    background-color: rgb(232, 106, 106);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.textToDlt{
+    background-color: rgb(4, 0, 0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: 90%;
+    word-wrap: break-word;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.popUpDlt div{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+.popUpDltBtn1{
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #6ed3cf;
+    display: block;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+    box-shadow: 4px 8px 20px grey;
+    color: white;
+    font-size: 18px;
+    font-weight: 400; 
+}
+
+.popUpDltBtn1:hover{
+    background-color: #33beba;
+    transition: 0.4s ease-in-out;
+}
+
+
+.popUpDltBtn2{
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(232, 106, 106);
+    display: block;
+    margin-top: 10px;
+    width: 30%;
+    height: 30px;
+    box-shadow: 4px 8px 20px grey;
+    color: white;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.popUpDltBtn2:hover{
+    background-color: rgb(223, 71, 71);
+    transition: 0.4s ease-in-out;
+}
+
+.popUpView{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: 0.4s ease;
+    background-color: white;
+    width: 250px;
+    height: fit-content;
+    word-break: break-all;
+    border-radius: 4px;
+}
+
+.seeTask{
+    color: #e10017;
+    width: 90%;
+    margin: 20% auto 30px auto;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.popUpViewBtn{
+    display: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background-color: #6ed3cf;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 80%;
+    height: 30px;
+    box-shadow: 4px 8px 20px grey;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.added{
+    display: none;
+    position: fixed;
+    transition: 0.4s ease-in-out;
+    top: 750px;
+    right: 0;
+    color: rgb(17, 231, 6);
+    font-size: 15px;
+}
+
+/*JS Classes*/
+.popUp.promptIt, .confirmDlt.popUpDlt{
+    display: block;
+    transition: 0.4s ease-in-out;
+}
+
+.popUpView.viewTask{
+    display: block;
+    transition: 0.4s ease-in-out;
+}
+
+.fadeMe.fadeOut{
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.show.added{
+    display: block;
+    transition: 00.4s ease-in-out;
+}
+
+@media (max-width: 720px){
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    .inputField{
+        width: 90%;
+    }
+}

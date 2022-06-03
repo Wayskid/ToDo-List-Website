@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Andada+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link rel='stylesheet' href='https://unpkg.com/emoji.css/dist/emoji.min.css'>
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+    <title>ToDo List</title>
+  </head>
+  <body class="body">
+      
+    <container class="fadeMe">
+      <form class="form">
+        <input type="text" class="inputField" placeholder="Type In Your Task" />
+        <input class= "addTask" type="submit" value="Add Task" />
+      </form>
+
+      <div class="header">Task List</div>
+      <div class="placeTask">
+          <!-- Example
+            <div class="liStyle">
+            <input class="editLi" value="hello my nt">
+              
+            </input>
+            <a class="editButton">Edit</a>
+              <a class="deleteButton">Delete</a>
+          </div> -->
+      </div>
+    </container>
+
+    <div class="added">Added! <i class="em em-white_check_mark" aria-role="presentation" aria-label="WHITE HEAVY CHECK MARK"></i></div>
+
+    <div class="popUp">
+        <p class="popUpTxt">Kindly Type in your Task! <br>Thank You!!!</p>
+        <button class="popUpBtn">OK</button>
+    </div>
+
+    <div class="popUpDlt">
+        <p class="popUpDltTxt">Are you sure you want to delete: <div class="textToDlt"></div></p>
+        <div><button class="popUpDltBtn1">YES</button>
+        <button class="popUpDltBtn2">CANCEL</button></div>
+    </div>
+
+    <div class="popUpView">
+      <div class="seeTask"></div>
+      <button class="popUpViewBtn">OK</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
