@@ -8,10 +8,16 @@
     list-style: none;
 }
 
+html{
+    touch-action: pan-x pan-y;
+    height: 100%;
+}
+
 body{
     background-color: #001f3f;
     font-family: 'Andada Pro', serif;
 }
+
 
 container{
     background-color: #003a6d;
@@ -42,6 +48,7 @@ form{
     height: 40px;
 }
 
+
 .inputField:focus{
     outline: none;
     padding: 4px 9px;
@@ -60,22 +67,21 @@ form{
 }
 
 .addTask{
-    background-color: #F75990;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #F75990;
     border: none;
     cursor: pointer;
     font-size: 18px;
+    background: none;
 }
 
 .addTask:hover, .addTask:focus{
     outline: none;
-    background-color: #fe0d4e;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fe0d4e;
     transition: 0.4s;
+}
+
+.taskLiAndClr{
+    display: flex;
 }
 
 .header{
@@ -83,11 +89,7 @@ form{
     font-weight: 900;
     margin: 50px 30px 30px 30px;
     text-align: left;
-    
-    background-color: #2fbabd;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #2fbabd;
 }
 
 .placeTask{
@@ -112,17 +114,13 @@ form{
     display: flex;
     background: none;
     border: none;
-    /* color: #3ed1d4; */
-    background-color: #06f4f8;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: capitalize;
+    color: #06f4f8;
     width: 100%;
     padding: 5px 10px;
     margin: 5px 0;
     cursor: pointer;
 }
+
 
 .editLi:focus{
     color: #5efff7;
@@ -131,10 +129,7 @@ form{
 .deleteButton{
     word-break: keep-all;
     margin: auto 0;
-    background-color: #e62739;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #e62739;
     border: none;
     cursor: pointer;
     font-size: 13px;
@@ -142,21 +137,17 @@ form{
 
 .deleteButton:hover, .deleteButton:focus{
     outline: none;
-    background-color: #e10017;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #e10017;
     text-decoration: underline black 2px;
+    font-size: 15px;
+    transition: all 0.4s ease-in-out;
 }
 
 .editButton{
     word-break: keep-all;
     margin: auto 7px auto auto;
     padding-left: 20px;
-    background-color: #F75990;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #F75990;
     border: none;
     cursor: pointer;
     font-size: 13px;
@@ -164,12 +155,10 @@ form{
 
 .editButton:hover, .editButton:focus{
     outline: none;
-    background-color: #fe0d4e;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: 0.4s;
+    color: #fe0d4e;
+    transition: all 0.4s ease-in-out;
     text-decoration: underline black 2px;
+    font-size: 15px;
 }
 
 .popUp{
@@ -184,7 +173,6 @@ form{
     width: 250px;
     height: 150px;
     border-radius: 4px;
-    /* margin: -100px 0; */
 }
 
 
@@ -194,10 +182,7 @@ form{
     text-align: center;
     margin: 20px auto 10px auto;
     width: 50%;
-    background-color: #F75990;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #F75990;
     font-size: 20px;
 }
 
@@ -246,18 +231,11 @@ form{
     text-align: center;
     margin: 20px auto 10px auto;
     width: 50%;
-    background-color: rgb(232, 106, 106);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: rgb(232, 106, 106);
 }
 
 .textToDlt{
-    background-color: rgb(4, 0, 0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    width: 90%;
+    color: rgb(4, 0, 0);
     word-wrap: break-word;
     margin: 0 auto;
     margin-bottom: 5px;
@@ -334,6 +312,9 @@ form{
     width: 90%;
     margin: 20% auto 30px auto;
     text-align: center;
+}
+
+.seeTask::first-letter{
     text-transform: capitalize;
 }
 
@@ -359,10 +340,25 @@ form{
     display: none;
     position: fixed;
     transition: 0.4s ease-in-out;
-    top: 750px;
+    top: 90%;
     right: 0;
     color: rgb(17, 231, 6);
     font-size: 15px;
+}
+
+.clearAll{
+    display: none;
+    color: #d61a1a;
+    margin: 60px 12% 30px auto;
+    height: fit-content;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.clearAll:hover{
+    color: #ff0597;
 }
 
 /*JS Classes*/
@@ -382,11 +378,15 @@ form{
     user-select: none;
 }
 
-.show.added{
+.show.added, .show.clearAll{
     display: block;
     transition: 00.4s ease-in-out;
 }
 
+
+
+
+/*Media Query*/
 @media (max-width: 720px){
     form{
         display: flex;
@@ -394,5 +394,11 @@ form{
     }
     .inputField{
         width: 90%;
+    }
+    .clearAll{
+        font-size: 12px;
+    }
+    .header{
+        font-size: 23px;
     }
 }

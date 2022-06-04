@@ -1,3 +1,6 @@
+
+//DOM selectors
+
 const fadeContainer = document.querySelector(".fadeMe");
 const taskForm = document.querySelector(".form");
 const inputfield = document.querySelector(".inputField");
@@ -14,8 +17,11 @@ const textToDlt = document.querySelector(".textToDlt")
 const seeTask = document.querySelector(".seeTask")
 const popUpView = document.querySelector(".popUpView")
 const popUpViewBtn = document.querySelector(".popUpViewBtn")
+const clearAll = document.querySelector(".clearAll")
 
 
+
+//Load Event Listener
 
 loadEventListeners();
 
@@ -23,10 +29,15 @@ function loadEventListeners() {
   taskForm.addEventListener("submit", addTaskToList);
 }
 
+
+//Global Function
+
 function addTaskToList(e) {
 
     e.preventDefault();
     
+    //Actions on Input Field Manipulaion
+        //Show Warning When Input field is Empty
     if (inputfield.value === "") {
         fadeContainer.classList.add("fadeOut");
         popUp.classList.add("promptIt");
@@ -37,69 +48,84 @@ function addTaskToList(e) {
         });
     }
     else{
+        //Show Added on Additon
+        
         function showAdded() {
             added.classList.remove("show")
         }
         added.classList.add("show")
         setTimeout(showAdded, 1400);
-        // added.classList.remove("show");
-    }
-
-    const isTyped = inputfield.value;
-
-    const liStyle = document.createElement("div");
-    liStyle.className = "liStyle";
-
-    const editLi = document.createElement("input");
-    editLi.className = "editLi";
-    editLi.type = "text";
-    editLi.value = isTyped;
-    editLi.setAttribute("readonly", true);
-
-    const editButton = document.createElement("a");
-    editButton.className = "editButton";
-    editButton.appendChild(document.createTextNode("Edit"));
-
-    const deleteButton = document.createElement("a");
-    deleteButton.className = "deleteButton";
-    deleteButton.appendChild(document.createTextNode("Delete"));
-
-    placeTask.appendChild(liStyle);
-    liStyle.appendChild(editLi);
-    liStyle.appendChild(editButton);
-    liStyle.appendChild(deleteButton);
-
-    inputfield.value = "";
-
-
-
     
-
-    deleteButton.addEventListener("click", (e) => {
-        fadeContainer.classList.add("fadeOut")
-        popUpDlt.classList.add("confirmDlt");
-        textToDlt.innerText = editLi.value;
+        //Show CLR button on Transition
+        clearAll.classList.add("show");
 
 
-        popUpDltBtn1.addEventListener("click", () => {
-        e.target.parentElement.remove()
-        popUpDlt.classList.remove("confirmDlt")
-        fadeContainer.classList.remove("fadeOut")
-        })
+        //Adding Input to Task List
 
         
-        popUpDltBtn2.addEventListener("click", () => {
-        popUpDlt.classList.remove("confirmDlt")
-        fadeContainer.classList.remove("fadeOut")
-        })
-    })
+        const isTyped = inputfield.value;
+        //Create the Div ELement
+        const liStyle = document.createElement("div");
+        liStyle.className = "liStyle";
+
+        //Create The Input field (I used input field for the listing to make future editting work)
+        const editLi = document.createElement("input");
+        editLi.className = "editLi";
+        editLi.type = "text";
+        editLi.value = isTyped;
+        editLi.setAttribute("readonly", true);
+
+        //Create an Edit Button
+        const editButton = document.createElement("a");
+        editButton.className = "editButton";
+        editButton.appendChild(document.createTextNode("Edit"));
+
+        //Create a Delete Button
+        const deleteButton = document.createElement("a");
+        deleteButton.className = "deleteButton";
+        deleteButton.appendChild(document.createTextNode("Delete"));
+
+        //Appendages 
+        placeTask.appendChild(liStyle);
+        liStyle.appendChild(editLi);
+        liStyle.appendChild(editButton);
+        liStyle.appendChild(deleteButton);
+        
+        //Clear the inputField on adding Task
+        inputfield.value = "";
+    
+
+
 
     
+    // Confirm Delete
+        //PopUp Confirm
+        
+    deleteButton.addEventListener("click", (ev) => {
+        popUpDlt.classList.add("confirmDlt");
+        fadeContainer.classList.add("fadeOut");
+        textToDlt.innerText = editLi.value;
+  
+
+    const yesDlt = popUpDltBtn1.addEventListener("click", () => {
+        exeBtn();
+        ev.target.parentElement.remove();
+    });
+    const noDlt = popUpDltBtn2.addEventListener("click", () => {
+        exeBtn();
+        return;
+    });
+       
+        function exeBtn() {
+            popUpDlt.classList.remove("confirmDlt");
+            fadeContainer.classList.remove("fadeOut");
+        }
+     });
  
 
         
         
-        
+    //Edit Button    
 
     editButton.addEventListener("click", () => {
         
@@ -118,25 +144,33 @@ function addTaskToList(e) {
     });
   
 
+    //Click on Task To View
+
     editLi.addEventListener("click", () =>{
-    
+        //Click to View
         popUpView.classList.add("viewTask")
         seeTask.innerText = editLi.value;
         fadeContainer.classList.add("fadeOut")
-            
+
+        //Click to Go back
         popUpViewBtn.addEventListener("click", () => {
             popUpView.classList.remove("viewTask")
             seeTask.innerText = "";
             fadeContainer.classList.remove("fadeOut")
-        
         })
-            
     })
 
+    clearAll.addEventListener("click", () => {
+        liStyle.remove();
+        clearAll.classList.remove("show")
+    })
+
+    }
     
 
-
 }
+
+
 
 
 
