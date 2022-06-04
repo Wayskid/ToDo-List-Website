@@ -222,7 +222,6 @@ form{
     height: fit-content;
     border-radius: 4px;
     padding-bottom: 15px;
-    /* margin: -100px 0; */
 }
 
 .popUpDltTxt{
@@ -336,6 +335,78 @@ form{
     font-weight: 400;
 }
 
+.popUpClr{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transition: 0.4s ease;
+    background-color: white;
+    width: 250px;
+    height: fit-content;
+    border-radius: 4px;
+    padding-bottom: 15px;
+}
+
+.popUpClrTxt{
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+    margin: 20px auto 10px auto;
+    width: 50%;
+    color: rgb(232, 106, 106);
+}
+
+.popUpClr div{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.popUpClrBtn1{
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #6ed3cf;
+    display: block;
+    margin-top: 10px;
+    width: 20%;
+    height: 30px;
+    box-shadow: 4px 8px 20px grey;
+    color: white;
+    font-size: 18px;
+    font-weight: 400; 
+}
+
+.popUpClrBtn1:hover{
+    background-color: #33beba;
+    transition: 0.4s ease-in-out;
+}
+
+
+.popUpClrBtn2{
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(232, 106, 106);
+    display: block;
+    margin-top: 10px;
+    width: 30%;
+    height: 30px;
+    box-shadow: 4px 8px 20px grey;
+    color: white;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.popUpClrBtn2:hover{
+    background-color: rgb(223, 71, 71);
+    transition: 0.4s ease-in-out;
+}
+
 .added{
     display: none;
     position: fixed;
@@ -362,14 +433,14 @@ form{
 }
 
 /*JS Classes*/
-.popUp.promptIt, .confirmDlt.popUpDlt{
+.popUp.promptIt, .confirmDlt.popUpDlt, .popUpClr.confirmClr{
     display: block;
-    transition: 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .popUpView.viewTask{
     display: block;
-    transition: 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 .fadeMe.fadeOut{
@@ -378,10 +449,16 @@ form{
     user-select: none;
 }
 
-.show.added, .show.clearAll{
+.show.added{
     display: block;
-    transition: 00.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
+
+.show.clearAll{
+    display: block;
+    transition: all 0.7s ease-in-out;
+}
+
 
 
 

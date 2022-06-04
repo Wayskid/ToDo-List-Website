@@ -18,6 +18,9 @@ const seeTask = document.querySelector(".seeTask")
 const popUpView = document.querySelector(".popUpView")
 const popUpViewBtn = document.querySelector(".popUpViewBtn")
 const clearAll = document.querySelector(".clearAll")
+const popUpClr = document.querySelector(".popUpClr")
+const popUpClrBtn1 = document.querySelector(".popUpClrBtn1")
+const popUpClrBtn2 = document.querySelector(".popUpClrBtn2")
 
 
 
@@ -51,13 +54,15 @@ function addTaskToList(e) {
         //Show Added on Additon
         
         function showAdded() {
-            added.classList.remove("show")
+            added.classList.remove("show");
         }
-        added.classList.add("show")
+        added.classList.add("show");
         setTimeout(showAdded, 1400);
     
         //Show CLR button on Transition
-        clearAll.classList.add("show");
+        function timeOutShowClr(){clearAll.classList.add("show");
+        ;}
+                setTimeout(timeOutShowClr, 1300)
 
 
         //Adding Input to Task List
@@ -99,22 +104,31 @@ function addTaskToList(e) {
 
     
     // Confirm Delete
+
         //PopUp Confirm
-        
     deleteButton.addEventListener("click", (ev) => {
         popUpDlt.classList.add("confirmDlt");
         fadeContainer.classList.add("fadeOut");
         textToDlt.innerText = editLi.value;
   
 
-    const yesDlt = popUpDltBtn1.addEventListener("click", () => {
-        exeBtn();
-        ev.target.parentElement.remove();
-    });
-    const noDlt = popUpDltBtn2.addEventListener("click", () => {
-        exeBtn();
-        return;
-    });
+        const yesDlt = popUpDltBtn1.addEventListener("click", () => {
+            exeBtn();
+            ev.target.parentElement.remove();
+            if (placeTask.childElementCount >= 1) {
+                return;
+            }
+            else{
+                function timeOutClr(){clearAll.classList.remove("show");}
+                setTimeout(timeOutClr, 1300)
+            }
+        });
+
+
+        const noDlt = popUpDltBtn2.addEventListener("click", () => {
+            exeBtn();
+            return;
+        });
        
         function exeBtn() {
             popUpDlt.classList.remove("confirmDlt");
@@ -148,28 +162,62 @@ function addTaskToList(e) {
 
     editLi.addEventListener("click", () =>{
         //Click to View
-        popUpView.classList.add("viewTask")
+        popUpView.classList.add("viewTask");
         seeTask.innerText = editLi.value;
-        fadeContainer.classList.add("fadeOut")
+        fadeContainer.classList.add("fadeOut");
 
         //Click to Go back
         popUpViewBtn.addEventListener("click", () => {
-            popUpView.classList.remove("viewTask")
+            popUpView.classList.remove("viewTask");
             seeTask.innerText = "";
-            fadeContainer.classList.remove("fadeOut")
+            fadeContainer.classList.remove("fadeOut");
         })
     })
 
+
+
+
     clearAll.addEventListener("click", () => {
+        popUpClr.classList.add("confirmClr");
+        fadeContainer.classList.add("fadeOut");
+        
+        popUpClrBtn1.addEventListener("click", () => {
         liStyle.remove();
-        clearAll.classList.remove("show")
+        function timeOutClr(){clearAll.classList.remove("show");}
+                setTimeout(timeOutClr, 1300);
+        popUpClr.classList.remove("confirmClr");
+        fadeContainer.classList.remove("fadeOut");
+        });
+
+        popUpClrBtn2.addEventListener("click", () => {
+        popUpClr.classList.remove("confirmClr");
+        fadeContainer.classList.remove("fadeOut");
+        });
+
+        
+        
+        
     })
 
-    }
+    // if (placeTask.classList.contains("liStyle")) {
+    //     console.log("hdhtfy");
+    // // clearAll.classList.add("show");
+    // }
+
+    // if (placeTask.firstChild) {
+    //         console.log("working");
+    //     }
+    // else{
+    //     console.log("hello");
+    // }
+  } 
+
     
     
 
 }
+
+
 
 
 
